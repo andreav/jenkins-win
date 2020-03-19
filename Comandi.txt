@@ -1,9 +1,14 @@
-# ------------------ alias
+# ------------------ alias (nota i backslash per non valutare subito gli alias)
 alias dk_last_image_id="docker images | awk '{print \$3}' | awk 'NR==2'"
 # alias dk_last_cont_id="docker ps -l  --format '{{.ID}}'"
 alias dk_last_cont_id="docker ps -lq"
 alias dk_remove_last_container='docker stop $(docker ps -lq); docker rm $(docker ps -lq)'
 alias dk_remove_all_container='docker stop $(docker ps -aq); docker rm $(docker ps -aq)'
+alias dk_last_cont_ip_win="docker inspect --format '{{ .NetworkSettings.Networks.nat.IPAddress }}' \$( dk_last_cont_id )"
+alias dk_last_cont_ip_unx="docker inspect --format '{{ .NetworkSettings.IPAddress }}' \$( dk_last_cont_id )"
+alias dk_last_cont_bash="docker exec -it \$( dk_last_cont_id ) /bin/bash"
+alias dk_last_cont_ps1="docker exec -it \$( dk_last_cont_id ) powershell"
+
 
 
 # ------------------- Immagini
@@ -19,7 +24,7 @@ docker rmi jenkins-official     # remove tag (e immagine)
 
 docker ps -a
 docker rm cd2e25258871
-
+docker restart $( dk_last_cont_id )
 
 # ------------------- Lancia l'ultima immagine buildata
 docker run -it $(dk_last_image_id)

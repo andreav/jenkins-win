@@ -72,3 +72,4 @@ matrix-auth:2.5
 pam-auth:1.6
 ldap:1.21
 email-ext:2.69
+locale:1.4

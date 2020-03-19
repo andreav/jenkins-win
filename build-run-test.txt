@@ -1,0 +1,5 @@
+docker build -t andreav/jenkins-win -f Dockerfile .
+docker run -it -p 8080:8080 -v '\\.\pipe\docker_engine':'\\.\pipe\docker_engine' andreav/jenkins-win
+
+docker pull hello-world:nanoserver-1809
+docker version
