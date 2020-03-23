@@ -24,7 +24,8 @@ docker rmi jenkins-official     # remove tag (e immagine)
 
 docker ps -a
 docker rm cd2e25258871
-docker restart $( dk_last_cont_id )
+docker restart $( dk_last_cont_id ) # stop e restart l'ultimo cont
+docker start $( dk_last_cont_id )   # start l'ultimo container
 
 # ------------------- Lancia l'ultima immagine buildata
 docker run -it $(dk_last_image_id)
