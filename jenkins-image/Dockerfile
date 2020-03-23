@@ -16,12 +16,12 @@ RUN & C:/ProgramData/Jenkins/install-plugins.ps1 -PluginFile C:/ProgramData/Jenk
 # JCasC-plugin: file based Jenkins configuration
 ENV CASC_JENKINS_CONFIG C:/ProgramData/Jenkins/jcasc_configs
 RUN mkdir C:/ProgramData/Jenkins/jcasc_configs
-# Files will be passed at container startup to:
+# Files will be passed at container startup time in order to:
 # - avoid rebuilding image any time the config changes
-# - let to change the image at runtime:
-#   1. change file
-#   2. go to JCasC plugin page
-#   3. reload config from file 
+# - let the user change the image at runtime fdollowing these steps:
+#       1. change any file inside jcasc_configs folder
+#       2. visitnig JCasC plugin page
+#       3. reload config from file 
 # COPY jenkins.yaml C:/ProgramData/Jenkins/jcasc_configs
 
 # Skip wizard

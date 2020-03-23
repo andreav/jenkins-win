@@ -1,0 +1,14 @@
+jenkins:
+  authorizationStrategy:
+    globalMatrix:
+      grantedPermissions:
+        - "Overall/Read:anonymous"
+        - "Job/Read:anonymous"
+        - "View/Read:anonymous"
+        - "Overall/Administer:authenticated"
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+      - id: admin
+        password: ${admin:-passw0rd}

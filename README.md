@@ -12,7 +12,7 @@ docker build -t andreav/jenkins-win ./jenkins-image
 docker run  -it \
             -v jenkins_home:C:\\ProgramData\\Jenkins\\JenkinsHome \
             -v '\\.\pipe\docker_engine':'\\.\pipe\docker_engine' \
-            -v 'D:\ProjectDocker\Jenkins-Win\jcasc_configs':'C:\ProgramData\Jenkins\jcasc_configs' \
+            -v $(cygpath.exe -w ${PWD})'\jcasc_configs':'C:\ProgramData\Jenkins\jcasc_configs' \
             -p 8888:8080 \
             -p 55555:50000 \
             andreav/jenkins-win
