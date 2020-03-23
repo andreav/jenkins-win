@@ -56,7 +56,7 @@ docker login --username=andreav
 docker tag bb38976d03cf andreav/jenkins:1.0-windowsservercore
 docker push andreav/jenkins:1.0-windowsservercore
 
-# Se non vuoi precare banda:
+# Se non vuoi sprecare banda:
 #  - crea un repo su Docker Hub
 #  - crea un repo su Git Hub
 #  - vai sotto builds in Docker Hub e collega il repo di Git Hub a quello di Docker Hub

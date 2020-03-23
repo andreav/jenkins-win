@@ -11,4 +11,4 @@ jenkins:
       allowsSignup: false
       users:
       - id: admin
-        password: ${admin:-passw0rd}
+        password: ${adminpw:-passw0rd}

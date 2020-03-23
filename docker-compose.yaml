@@ -2,6 +2,7 @@ version: '3.3'
 
 services:
   jenkins:
+    image: andreav/jenkins-win
     build: #TODO: Once plugin installation is handled through c-as-c this can be removed and replaced with 'image'.
       context: ./jenkins-image
     ports:
@@ -9,11 +10,17 @@ services:
       - 55555:55555
     volumes:
       - jenkins_home:C:/ProgramData/Jenkins/JenkinsHome
-      - \\.\pipe\docker_engine:\\.\pipe\docker_engine
-      - ./casc_configs:C:/ProgramData/Jenkins/jcasc_configs
-    secrets:
-      - github  #Github username with password as an example.
-      - adminpw  #Initial administrator user password.
+      # - \\.\pipe\docker_engine:\\.\pipe\docker_engine
+      - ./jcasc_configs:C:/ProgramData/Jenkins/jcasc_configs
+      - source: '\\.\pipe\docker_engine'
+        target: '\\.\pipe\docker_engine'
+        type: npipe
+
+    # secrets:
+    #   - source: github  #Github username with password as an example.
+    #     target: C:\temp\github
+    #   - source: adminpw  #Initial administrator user password.
+    #     target: C:\temp\adminpwd
     environment:
       - CASC_JENKINS_CONFIG=C:/ProgramData/Jenkins/jcasc_configs
 secrets: #Be careful with newlines in your secrets, make sure to remove them before running docker-compose up.
